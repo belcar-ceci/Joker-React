@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState}  from 'react';
+import axios from 'axios';
 
-function App() {
+
+
+  function App() {
+    const [joker, setJoker] = useState('')
+    const getJokers = () => {
+      axios.get('https://api.chucknorris.io/jokes/random')
+      .then(res => {
+        console.log(res.data.value)
+        setJoker(res.data.value)
+      }).catch(err => {
+        console.log(err)
+      })
+    }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <h2>Joker</h2>
+        { joker && <p>{joker}</p> }
+      <button onClick={getJokers}>New joker 😇  </button>
     </div>
-  );
-}
+)};
+
 
 export default App;
+
