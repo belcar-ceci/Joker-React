@@ -20,7 +20,7 @@ import axios from 'axios';
     <div className='container'>
       <h2>Joker</h2>
         { joker && <p>{joker}</p> }
-      <button onClick={getJokers}>New joker 😇 🐈    </button>
+      <button onClick={getJokers}>New joker add 😇 🐈    </button>
     </div>
 )};
 
